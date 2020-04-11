@@ -75,7 +75,7 @@ class HueApi:
         for id in response:
             state = response[id].get('state')
             name = response[id].get('name')
-            hue_light = HueLight(int(id), name, state, self.base_url)
+            hue_light = HueLight(int(id), name, state, url)
             lights.append(hue_light)
         self.lights = lights
 
