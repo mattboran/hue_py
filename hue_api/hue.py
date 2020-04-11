@@ -1,4 +1,5 @@
 import colorsys
+import inspect
 import json
 import os
 import pickle
@@ -7,6 +8,7 @@ import uuid
 import requests as re
 import webcolors
 
+import hue_api
 from hue_api.lights import HueLight
 from hue_api.exceptions import (UninitializedException,
                                 ButtonNotPressedException,
@@ -15,8 +17,9 @@ from hue_api.exceptions import (UninitializedException,
 
 class HueApi:
 
-    def load_existing(self, cache_file='.pickle'):
+    def load_existing(self, cache_file=None):
         try:
+            cache_file = cache_file or self.find_cache_file()
             with open(cache_file, 'rb') as cached_file:
                 loaded = pickle.load(cached_file)
             bridge_ip_address = loaded.get('bridge_ip_address')
@@ -26,6 +29,14 @@ class HueApi:
         self.bridge_ip_address = bridge_ip_address
         self.user_name = user_name
         self.base_url = f'http://{bridge_ip_address}/api/{user_name}/lights'
+
+    def find_cache_file(self):
+        module_entry_point = inspect.getfile(hue_api)
+        module_base_dir = os.path.dirname(module_entry_point)
+        cache_file = os.path.join(module_base_dir, '.pickle')
+        if not os.path.isfile(cache_file):
+            raise FileNotFoundError
+        return cache_file
 
     def create_new_user(self, bridge_ip_address):
         url = f'http://{bridge_ip_address}/api'
