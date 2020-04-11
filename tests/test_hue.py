@@ -39,7 +39,7 @@ def test_load_existing():
     api.load_existing(cache_file=test_cache_file)
     assert api.user_name == test_user_name
     assert api.bridge_ip_address == test_ip_address
-    assert api.base_url == 'http://test_address/api/test_user_name/lights'
+    assert api.base_url == 'http://test_address/api/test_user_name'
     os.remove(test_cache_file)
 
 def test_create_new(monkeypatch):
@@ -75,7 +75,7 @@ def test_create_new(monkeypatch):
     api.create_new_user(test_address)
     assert api.bridge_ip_address == test_address
     assert api.user_name == test_user_name
-    assert api.base_url == 'http://test_address/api/test_user_name/lights'
+    assert api.base_url == 'http://test_address/api/test_user_name'
 
     monkeypatch.setattr(requests, 'post', mock_post_device_type_error)
     with pytest.raises(DevicetypeException):
@@ -116,7 +116,7 @@ def test_fetch_lights(monkeypatch):
     test_url = 'http://test.com'
 
     def mock_get(*args, **kwargs):
-        assert args[0] == test_url
+        assert args[0] == test_url + "/lights"
         return MockResponse()
 
     monkeypatch.setattr(requests, 'get', mock_get)
