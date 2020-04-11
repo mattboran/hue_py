@@ -125,36 +125,39 @@ def test_fetch_lights(monkeypatch):
     api.fetch_lights()
     assert len(api.lights) == 1
     assert api.lights[0].name == test_light_name
+    assert api.lights[0].id == 1
 
 def test_filter_lights():
     api = HueApi()
     api.lights = [
-        HueLight('1', 'Light 1', {}, None),
-        HueLight('2', 'light 2', {}, None)
+        HueLight(1, 'Light 1', {}, None),
+        HueLight(2, 'light 2', {}, None)
     ]
     assert len(api.filter_lights(None)) == 2
-    assert len(api.filter_lights('1')) == 1
-    assert api.filter_lights('1')[0].id == '1'
+    assert len(api.filter_lights([1])) == 1
+    assert api.filter_lights([1])[0].id == 1
+    assert api.filter_lights([2])[0].id == 2
+    assert api.filter_lights([1, 2]) == api.lights
 
 def test_turn_on_off(put_nothing):
     api = HueApi()
     api.lights = [
-        HueLight('1', 'Light 1', {}, None),
-        HueLight('2', 'light 2', {}, None)
+        HueLight(1, 'Light 1', {}, None),
+        HueLight(2, 'light 2', {}, None)
     ]
     for light in api.lights:
         assert not light.state.is_on
     api.turn_on()
     for light in api.lights:
         assert light.state.is_on
-    api.turn_off('1')
+    api.turn_off([1])
     assert not api.lights[0].state.is_on
     assert api.lights[1].state.is_on
 
 def test_toggle_on(put_nothing):
     api = HueApi()
     api.lights = [
-        HueLight('1', 'Light 1', {'on': False}, None),
+        HueLight(1, 'Light 1', {'on': False}, None),
     ]
     light = api.lights[0]
     assert not light.state.is_on
@@ -166,7 +169,7 @@ def test_toggle_on(put_nothing):
 def test_set_brightness(put_nothing):
     api = HueApi()
     api.lights = [
-        HueLight('1', 'Light 1', {'bri': 1}, None),
+        HueLight(1, 'Light 1', {'bri': 1}, None),
     ]
     light = api.lights[0]
     assert light.state.brightness == 1
@@ -178,7 +181,7 @@ def test_set_brightness(put_nothing):
 def test_set_color(put_nothing):
     api = HueApi()
     api.lights = [
-        HueLight('1', 'Light 1', {'hue': 0, 'sat': 0}, None),
+        HueLight(1, 'Light 1', {'hue': 0, 'sat': 0}, None),
     ]
     light = api.lights[0]
     assert light.state.hue == 0
