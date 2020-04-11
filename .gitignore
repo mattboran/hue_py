@@ -1,0 +1,11 @@
+env/
+.env
+.vscode/
+__pycache__*
+*.pickle
+dist/
+*.egg-info
+build/
+.eggs/
+.coverage
+scripts/
