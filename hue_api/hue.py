@@ -78,6 +78,7 @@ class HueApi:
             hue_light = HueLight(int(id), name, state, url)
             lights.append(hue_light)
         self.lights = lights
+        return lights
 
     def fetch_groups(self, *args, **kwargs):
         url = self.base_url + "/groups"
@@ -89,6 +90,7 @@ class HueApi:
             group_lights = self.filter_lights(lights)
             groups.append(HueGroup(id, group_name, group_lights))
         self.groups = groups
+        return groups
 
     def print_debug_info(self, *args, **kwargs):
         print(f"Bridge IP address: {self.bridge_ip_address}")
@@ -108,7 +110,8 @@ class HueApi:
             return self.lights
         return [light for light in self.lights if light.id in indices]
 
-    # When no index is supplied, all the lights are turned on
+    # Lights State Control
+
     def turn_on(self, indices=[]):
         for light in self.filter_lights(indices):
             light.set_on()
