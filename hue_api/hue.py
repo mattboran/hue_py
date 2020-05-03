@@ -11,6 +11,7 @@ import webcolors
 import hue_api
 from hue_api.lights import HueLight
 from hue_api.groups import HueGroup
+from hue_api.scene import HueScene
 from hue_api.exceptions import (UninitializedException,
                                 ButtonNotPressedException,
                                 DevicetypeException)
@@ -21,6 +22,8 @@ class HueApi:
     def __init__(self):
         self.lights = []
         self.groups = []
+        self.scenes = []
+        self.grouped_scenes = {}
 
     def load_existing(self, *args, **kwargs):
         try:
@@ -92,6 +95,19 @@ class HueApi:
         self.groups = groups
         return groups
 
+    def fetch_scenes(self, *args, **kwargs):
+        url = self.base_url + "/scenes"
+        response = re.get(url).json()
+        scenes = []
+        for id in response:
+            scene_name = response[id].get('name')
+            lights = [int(light) for light in response[id].get('lights')]
+            scene_lights = self.filter_lights(lights)
+            scenes.append(HueScene(id, scene_name, scene_lights))
+        self.scenes = scenes
+        self.grouped_scenes = HueScene.group_scenes(scenes)
+        return scenes
+
     def print_debug_info(self, *args, **kwargs):
         print(f"Bridge IP address: {self.bridge_ip_address}")
         print(f"Bridge API key (username): {self.user_name}")
@@ -104,6 +120,16 @@ class HueApi:
     def list_groups(self, *args, **kwargs):
         for group in self.groups:
             print(group, "\n")
+
+    def list_scenes(self, *args, **kwargs):
+        for scene in self.scenes:
+            print(scene, "\n")
+
+    def list_scene_groups(self, *args, **kwargs):
+        for group in self.grouped_scenes:
+            print(f"\nScene group:{group}")
+            for scene in self.grouped_scenes[group]:
+                print(scene)
 
     def filter_lights(self, indices):
         if not indices:
