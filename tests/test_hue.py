@@ -6,6 +6,7 @@ import pytest
 
 from hue_api import HueApi
 from hue_api.lights import HueLight
+from hue_api.groups import HueGroup
 from hue_api.exceptions import (UninitializedException,
                                 DevicetypeException,
                                 ButtonNotPressedException)
@@ -116,7 +117,7 @@ def test_fetch_lights(monkeypatch):
     test_url = 'http://test.com'
 
     def mock_get(*args, **kwargs):
-        assert args[0] == test_url + "/lights"
+        assert args[0] == test_url + '/lights'
         return MockResponse()
 
     monkeypatch.setattr(requests, 'get', mock_get)
@@ -126,6 +127,76 @@ def test_fetch_lights(monkeypatch):
     assert len(api.lights) == 1
     assert api.lights[0].name == test_light_name
     assert api.lights[0].id == 1
+
+def test_fetch_groups(monkeypatch):
+    test_group_name = 'test group'
+
+    class MockResponse:
+        def json(self):
+            return {
+                '1': {
+                    'name': test_group_name,
+                    'lights': [2],
+
+                }
+            }
+
+    test_url = 'http://test.com'
+
+    def mock_get(*args, **kwargs):
+        assert args[0] == test_url + '/groups'
+        return MockResponse()
+
+    monkeypatch.setattr(requests, 'get', mock_get)
+    api = HueApi()
+    api.lights = [
+        HueLight(1, 'Light 1', {}, None),
+        HueLight(2, 'light 2', {}, None)
+    ]
+    api.base_url = test_url
+    api.fetch_groups()
+    assert len(api.groups) == 1
+    assert api.groups[0].id == '1'
+    assert len(api.groups[0].lights) == 1
+    assert api.groups[0].lights[0].id == 2
+    assert api.groups[0].name == test_group_name
+
+
+def test_fetch_scenes(monkeypatch):
+    test_scene_name = 'test scene'
+
+    class MockResponse:
+        def json(self):
+            return {
+                '1': {
+                    'name': test_scene_name,
+                    'lights': [1],
+                },
+                '2': {
+                    'name': test_scene_name,
+                    'lights': [2]
+                }
+            }
+
+    test_url = 'http://test.com'
+
+    def mock_get(*args, **kwargs):
+        assert args[0] == test_url + '/scenes'
+        return MockResponse()
+
+    monkeypatch.setattr(requests, 'get', mock_get)
+    api = HueApi()
+    api.lights = [
+        HueLight(1, 'Light 1', {}, None),
+        HueLight(2, 'light 2', {}, None)
+    ]
+    api.base_url = test_url
+    api.fetch_scenes()
+    assert len(api.scenes) == 2
+    assert len(api.grouped_scenes) == 1
+    assert len(api.scenes[0].lights) == 1
+    assert len(api.scenes[1].lights) == 1
+    assert len(api.grouped_scenes[test_scene_name]) == 2
 
 def test_filter_lights():
     api = HueApi()
