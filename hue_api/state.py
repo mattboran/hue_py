@@ -1,5 +1,8 @@
-# LightState is reactive and bound to a specific light
 class LightState:
+    """
+    LightState is an internal class that allows you to reactively set the properties on a light.
+    Don't use this class directly, instead use the methods on the `HueLight` or `HueGroups` classes.
+    """
     def __init__(self, state, bind_to=None):
         self.reachable = state.get('reachable')
         self.light = bind_to

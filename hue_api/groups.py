@@ -1,4 +1,12 @@
 class HueGroup:
+    """
+    Class that corresponds to a group of Hue Lights. 
+
+    Attributes:
+        id (int): Group's ID
+        name (str): Group's name
+        lights ([HueLight]): List of lights belonging to this group
+    """
     def __init__(self, id, name, lights):
         self.id = id
         self.name = name

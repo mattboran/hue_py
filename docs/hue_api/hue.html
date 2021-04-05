@@ -1,0 +1,1224 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
+<meta name="generator" content="pdoc 0.9.2" />
+<title>hue_api.hue API documentation</title>
+<meta name="description" content="" />
+<link rel="preload stylesheet" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/11.0.1/sanitize.min.css" integrity="sha256-PK9q560IAAa6WVRRh76LtCaI8pjTJ2z11v0miyNNjrs=" crossorigin>
+<link rel="preload stylesheet" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/11.0.1/typography.min.css" integrity="sha256-7l/o7C8jubJiy74VsKTidCy1yBkRtiUGbVkYBylBqUg=" crossorigin>
+<link rel="stylesheet preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/styles/github.min.css" crossorigin>
+<style>:root{--highlight-color:#fe9}.flex{display:flex !important}body{line-height:1.5em}#content{padding:20px}#sidebar{padding:30px;overflow:hidden}#sidebar > *:last-child{margin-bottom:2cm}.http-server-breadcrumbs{font-size:130%;margin:0 0 15px 0}#footer{font-size:.75em;padding:5px 30px;border-top:1px solid #ddd;text-align:right}#footer p{margin:0 0 0 1em;display:inline-block}#footer p:last-child{margin-right:30px}h1,h2,h3,h4,h5{font-weight:300}h1{font-size:2.5em;line-height:1.1em}h2{font-size:1.75em;margin:1em 0 .50em 0}h3{font-size:1.4em;margin:25px 0 10px 0}h4{margin:0;font-size:105%}h1:target,h2:target,h3:target,h4:target,h5:target,h6:target{background:var(--highlight-color);padding:.2em 0}a{color:#058;text-decoration:none;transition:color .3s ease-in-out}a:hover{color:#e82}.title code{font-weight:bold}h2[id^="header-"]{margin-top:2em}.ident{color:#900}pre code{background:#f8f8f8;font-size:.8em;line-height:1.4em}code{background:#f2f2f1;padding:1px 4px;overflow-wrap:break-word}h1 code{background:transparent}pre{background:#f8f8f8;border:0;border-top:1px solid #ccc;border-bottom:1px solid #ccc;margin:1em 0;padding:1ex}#http-server-module-list{display:flex;flex-flow:column}#http-server-module-list div{display:flex}#http-server-module-list dt{min-width:10%}#http-server-module-list p{margin-top:0}.toc ul,#index{list-style-type:none;margin:0;padding:0}#index code{background:transparent}#index h3{border-bottom:1px solid #ddd}#index ul{padding:0}#index h4{margin-top:.6em;font-weight:bold}@media (min-width:200ex){#index .two-column{column-count:2}}@media (min-width:300ex){#index .two-column{column-count:3}}dl{margin-bottom:2em}dl dl:last-child{margin-bottom:4em}dd{margin:0 0 1em 3em}#header-classes + dl > dd{margin-bottom:3em}dd dd{margin-left:2em}dd p{margin:10px 0}.name{background:#eee;font-weight:bold;font-size:.85em;padding:5px 10px;display:inline-block;min-width:40%}.name:hover{background:#e0e0e0}dt:target .name{background:var(--highlight-color)}.name > span:first-child{white-space:nowrap}.name.class > span:nth-child(2){margin-left:.4em}.inherited{color:#999;border-left:5px solid #eee;padding-left:1em}.inheritance em{font-style:normal;font-weight:bold}.desc h2{font-weight:400;font-size:1.25em}.desc h3{font-size:1em}.desc dt code{background:inherit}.source summary,.git-link-div{color:#666;text-align:right;font-weight:400;font-size:.8em;text-transform:uppercase}.source summary > *{white-space:nowrap;cursor:pointer}.git-link{color:inherit;margin-left:1em}.source pre{max-height:500px;overflow:auto;margin:0}.source pre code{font-size:12px;overflow:visible}.hlist{list-style:none}.hlist li{display:inline}.hlist li:after{content:',\2002'}.hlist li:last-child:after{content:none}.hlist .hlist{display:inline;padding-left:1em}img{max-width:100%}td{padding:0 .5em}.admonition{padding:.1em .5em;margin-bottom:1em}.admonition-title{font-weight:bold}.admonition.note,.admonition.info,.admonition.important{background:#aef}.admonition.todo,.admonition.versionadded,.admonition.tip,.admonition.hint{background:#dfd}.admonition.warning,.admonition.versionchanged,.admonition.deprecated{background:#fd4}.admonition.error,.admonition.danger,.admonition.caution{background:lightpink}</style>
+<style media="screen and (min-width: 700px)">@media screen and (min-width:700px){#sidebar{width:30%;height:100vh;overflow:auto;position:sticky;top:0}#content{width:70%;max-width:100ch;padding:3em 4em;border-left:1px solid #ddd}pre code{font-size:1em}.item .name{font-size:1em}main{display:flex;flex-direction:row-reverse;justify-content:flex-end}.toc ul ul,#index ul{padding-left:1.5em}.toc > ul > li{margin-top:.5em}}</style>
+<style media="print">@media print{#sidebar h1{page-break-before:always}.source{display:none}}@media print{*{background:transparent !important;color:#000 !important;box-shadow:none !important;text-shadow:none !important}a[href]:after{content:" (" attr(href) ")";font-size:90%}a[href][title]:after{content:none}abbr[title]:after{content:" (" attr(title) ")"}.ir a:after,a[href^="javascript:"]:after,a[href^="#"]:after{content:""}pre,blockquote{border:1px solid #999;page-break-inside:avoid}thead{display:table-header-group}tr,img{page-break-inside:avoid}img{max-width:100% !important}@page{margin:0.5cm}p,h2,h3{orphans:3;widows:3}h1,h2,h3,h4,h5,h6{page-break-after:avoid}}</style>
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/highlight.min.js" integrity="sha256-Uv3H6lx7dJmRfRvH8TH6kJD1TSK1aFcwgx+mdg3epi8=" crossorigin></script>
+<script>window.addEventListener('DOMContentLoaded', () => hljs.initHighlighting())</script>
+</head>
+<body>
+<main>
+<article id="content">
+<header>
+<h1 class="title">Module <code>hue_api.hue</code></h1>
+</header>
+<section id="section-intro">
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">import colorsys
+import inspect
+import json
+import os
+import pickle
+import uuid
+
+import requests as re
+import webcolors
+
+import hue_api
+from hue_api.lights import HueLight
+from hue_api.groups import HueGroup
+from hue_api.scene import HueScene
+from hue_api.exceptions import (UninitializedException,
+                                ButtonNotPressedException,
+                                DevicetypeException)
+
+
+class HueApi:
+    &#34;&#34;&#34;
+    Hue API Core class that keeps track of lights, groups, and scenes.
+
+    First initialize an instance of this class. 
+    Then, either `create_new_user` or `load_existing`.
+
+    From there you can run all of the other methods that this class provides. 
+    &#34;&#34;&#34;
+
+    def __init__(self):
+        self.lights = []
+        self.groups = []
+        self.scenes = []
+        self.grouped_scenes = {}
+
+    def load_existing(self, cache_file=None, *args, **kwargs):
+        &#34;&#34;&#34;
+        Load existing hue bridge user setting from `cache_file`.
+        If no `cache_file` is provided, the `self.default_cache_file` method is used to make a cache file in the package&#39;s install directory.
+        Finally, lastly, `self.default_cache_file` is used if not.
+
+        After running this method, the API is authenticated and the Hue bridge can be interacted with.
+
+        Args:
+            cache_file (str, optional): Path to cache file. Defaults to `self.default_cache_file`.
+        Raises:
+            UninitializedException: Hue API could not be initialized
+        &#34;&#34;&#34;
+        try:
+            cache_file = kwargs.get(&#39;cache_file&#39;) or self.default_cache_file()
+            with open(cache_file, &#39;rb&#39;) as cached_file:
+                loaded = pickle.load(cached_file)
+            bridge_ip_address = loaded.get(&#39;bridge_ip_address&#39;)
+            user_name = loaded.get(&#39;user_name&#39;)
+        except FileNotFoundError:
+            raise UninitializedException
+        self.bridge_ip_address = bridge_ip_address
+        self.user_name = user_name
+        self.base_url = f&#39;http://{bridge_ip_address}/api/{user_name}&#39;
+
+    def default_cache_file(self) -&gt; str:
+        &#34;&#34;&#34;
+        Default cache file path, in the package&#39;s install directory.
+
+        Returns:
+            str: Cache file path
+        &#34;&#34;&#34;
+        package_base_dir = inspect.getfile(hue_api)
+        package_base_dir = os.path.dirname(package_base_dir)
+        path = os.path.join(package_base_dir, &#39;.pickle&#39;)
+        return path
+
+    def create_new_user(self, bridge_ip_address, *args, **kwargs):
+        &#34;&#34;&#34;
+        Create a new API user for the Hue Bridge at the given IP address.
+
+        Args:
+            bridge_ip_address (str): The IP Address for the Hue Bridge
+
+        Raises:
+            DevicetypeException: the Hue Bridge at the given address does not support interfacing via this API.
+
+            ButtonNotPressedException: the button on the Bridge was not pressed, so the attempt to connect to it has failed
+        &#34;&#34;&#34;
+        url = f&#39;http://{bridge_ip_address}/api&#39;
+        payload = {&#39;devicetype&#39;: &#39;hue_cli&#39;}
+        response = re.post(url, json=payload)
+        response = response.json()[0]
+        error = response.get(&#39;error&#39;)
+        if error:
+            if error[&#39;type&#39;] == 1:
+                raise DevicetypeException
+            else:
+                raise ButtonNotPressedException
+        user_name = response.get(&#39;success&#39;).get(&#39;username&#39;)
+        self.user_name = user_name
+        self.bridge_ip_address = bridge_ip_address
+        self.base_url = f&#39;http://{bridge_ip_address}/api/{user_name}&#39;
+
+    def save_api_key(self, cache_file=None, *args, **kwargs):
+        &#34;&#34;&#34;
+        Save the API key (username) to a cache file.
+
+        Args:
+            cache_file (str, optional): Path to cache file. Defaults to `self.default_cache_file`.
+        &#34;&#34;&#34;
+        cache_file = cache_file or self.default_cache_file()
+        with open(cache_file, &#39;wb&#39;) as pickle_file:
+            cache = {
+                &#39;bridge_ip_address&#39;: self.bridge_ip_address,
+                &#39;user_name&#39;: self.user_name
+            }
+            pickle.dump(cache, pickle_file)
+
+    def fetch_lights(self, *args, **kwargs):
+        &#34;&#34;&#34;
+        Fetch available lights from the bridge.
+
+        Returns:
+            [HueLight]: List of available lights. Also saved to `self.lights`
+        &#34;&#34;&#34;
+        url = self.base_url + &#34;/lights&#34;
+        response = re.get(url).json()
+        lights = []
+        for id in response:
+            state = response[id].get(&#39;state&#39;)
+            name = response[id].get(&#39;name&#39;)
+            hue_light = HueLight(int(id), name, state, url)
+            lights.append(hue_light)
+        self.lights = lights
+        return lights
+
+    def fetch_groups(self, *args, **kwargs):
+        &#34;&#34;&#34;
+        Fetch available groups from the bridge
+
+        Returns:
+            [HueGroup]: List of available groups. Also saved to `self.groups`
+        &#34;&#34;&#34;
+        url = self.base_url + &#34;/groups&#34;
+        response = re.get(url).json()
+        groups = []
+        for id in response:
+            group_name = response[id].get(&#39;name&#39;)
+            lights = [int(light) for light in response[id].get(&#39;lights&#39;)]
+            group_lights = self.filter_lights(lights)
+            groups.append(HueGroup(id, group_name, group_lights))
+        self.groups = groups
+        return groups
+
+    def fetch_scenes(self, *args, **kwargs):
+        &#34;&#34;&#34;
+        Fetch available scenes from the bridge
+
+        Returns:
+            [HueScene]: List of available groups. Also saved to `self.scenes`
+        &#34;&#34;&#34;
+        url = self.base_url + &#34;/scenes&#34;
+        response = re.get(url).json()
+        scenes = []
+        for id in response:
+            scene_name = response[id].get(&#39;name&#39;)
+            lights = [int(light) for light in response[id].get(&#39;lights&#39;)]
+            scene_lights = self.filter_lights(lights)
+            scenes.append(HueScene(id, scene_name, scene_lights))
+        self.scenes = scenes
+        self.grouped_scenes = HueScene.group_scenes(scenes)
+        return scenes
+
+    def print_debug_info(self, *args, **kwargs):
+        &#34;&#34;&#34;
+        Print some debug info about bridge.
+        &#34;&#34;&#34;
+        print(f&#34;Bridge IP address: {self.bridge_ip_address}&#34;)
+        print(f&#34;Bridge API key (username): {self.user_name}&#34;)
+        print(f&#34;API Base URL: {self.base_url}&#34;)
+
+    def list_lights(self, *args, **kwargs):
+        &#34;&#34;&#34;
+        Print debug info on all the lights from `self.lights`
+        &#34;&#34;&#34;
+        for light in self.lights:
+            print(light)
+
+    def list_groups(self, *args, **kwargs):
+        &#34;&#34;&#34;
+        Print debug info on all the groups from `self.groups`
+        &#34;&#34;&#34;
+        for group in self.groups:
+            print(group, &#34;\n&#34;)
+
+    def list_scenes(self, *args, **kwargs):
+        &#34;&#34;&#34;
+        Print debug info on all the scenes from `self.scenes`
+        &#34;&#34;&#34;
+        for scene in self.scenes:
+            print(scene, &#34;\n&#34;)
+
+    def list_scene_groups(self, *args, **kwargs):
+        &#34;&#34;&#34;
+        Print debug info on all the scenes from `self.grouped_scenes`.
+        These scenes are in a `dict` of `{ scene_name(str) : [HueScene] }`
+        &#34;&#34;&#34;
+        for group in self.grouped_scenes:
+            print(f&#34;\nScene group:{group}&#34;)
+            for scene in self.grouped_scenes[group]:
+                print(scene)
+
+    def filter_lights(self, indices):
+        &#34;&#34;&#34;
+        Return only certain lights, by id
+
+        Args:
+            indices ([int]): The ids of the lights we want
+
+        Returns:
+            [HueLight]: List of lights whose ids match `indices`
+        &#34;&#34;&#34;
+        if not indices:
+            return self.lights
+        return [light for light in self.lights if light.id in indices]
+
+    # Lights State Control
+
+    def turn_on(self, indices=[]):
+        &#34;&#34;&#34;
+        Turn on only those lights whose ids are provided
+
+        Args:
+            indices ([int], optional): Indices for the lights we want to turn on. Defaults to [].
+        &#34;&#34;&#34;
+        for light in self.filter_lights(indices):
+            light.set_on()
+
+    def turn_off(self, indices=[]):
+        &#34;&#34;&#34;
+        Turn off only those lights whose ids are provided
+
+        Args:
+            indices ([int], optional): Indices for the lights we want to turn off. Defaults to [].
+        &#34;&#34;&#34;
+        for light in self.filter_lights(indices):
+            light.set_off()
+
+    def toggle_on(self, indices=[]):
+        &#34;&#34;&#34;
+        Toggle on/pff only those lights whose ids are provided
+
+        Args:
+            indices ([int], optional): Indices for the lights we want to toggle. Defaults to [].
+        &#34;&#34;&#34;
+        for light in self.filter_lights(indices):
+            light.toggle_on()
+
+    def set_brightness(self, brightness, indices=[]):
+        &#34;&#34;&#34;
+        Set brightness on only those lights whose ids are provided
+
+        Args:
+            brightness (int or float): int value in range [0, 255], or float value in range [0, 1]
+            indices ([int], optional): Indices for lights we want to set brightness on.
+            Defaults to [].
+        &#34;&#34;&#34;
+        if isinstance(brightness, str):
+            try:
+                brightness = float(brightness)
+            except ValueError:
+                pass
+            if brightness == &#39;max&#39;:
+                brightness = 254
+            elif brightness == &#39;min&#39;:
+                brightness = 1
+            elif brightness == &#39;med&#39;:
+                brightness = 127
+        if isinstance(brightness, float):
+            if brightness &lt;= 1.0:
+                brightness *= 254
+            brightness = int(brightness)
+        for light in self.filter_lights(indices):
+            light.set_brightness(brightness)
+
+    def set_color(self, color, indices=[]):
+        &#34;&#34;&#34;
+        Set color for only those lights whose ids are provided
+
+        Args:
+            color (str): The webcolor name of the color we want to set the lights to
+            indices ([int], optional): Ids of lights we want to set color on. Defaults to [].
+        &#34;&#34;&#34;
+        if isinstance(color, str):
+            color = webcolors.name_to_rgb(color)
+            r = color[0] / 255
+            g = color[1] / 255
+            b = color[2] / 255
+        else:
+            r, g, b = color
+        h, s, _ = colorsys.rgb_to_hsv(r, g, b)
+        hue = int((2**16 - 1) * h)
+        saturation = int((2**8 - 1) * s)
+        for light in self.filter_lights(indices):
+            light.set_color(hue, saturation)</code></pre>
+</details>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+<h2 class="section-title" id="header-classes">Classes</h2>
+<dl>
+<dt id="hue_api.hue.HueApi"><code class="flex name class">
+<span>class <span class="ident">HueApi</span></span>
+</code></dt>
+<dd>
+<div class="desc"><p>Hue API Core class that keeps track of lights, groups, and scenes.</p>
+<p>First initialize an instance of this class.
+Then, either <code>create_new_user</code> or <code>load_existing</code>.</p>
+<p>From there you can run all of the other methods that this class provides.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class HueApi:
+    &#34;&#34;&#34;
+    Hue API Core class that keeps track of lights, groups, and scenes.
+
+    First initialize an instance of this class. 
+    Then, either `create_new_user` or `load_existing`.
+
+    From there you can run all of the other methods that this class provides. 
+    &#34;&#34;&#34;
+
+    def __init__(self):
+        self.lights = []
+        self.groups = []
+        self.scenes = []
+        self.grouped_scenes = {}
+
+    def load_existing(self, cache_file=None, *args, **kwargs):
+        &#34;&#34;&#34;
+        Load existing hue bridge user setting from `cache_file`.
+        If no `cache_file` is provided, the `self.default_cache_file` method is used to make a cache file in the package&#39;s install directory.
+        Finally, lastly, `self.default_cache_file` is used if not.
+
+        After running this method, the API is authenticated and the Hue bridge can be interacted with.
+
+        Args:
+            cache_file (str, optional): Path to cache file. Defaults to `self.default_cache_file`.
+        Raises:
+            UninitializedException: Hue API could not be initialized
+        &#34;&#34;&#34;
+        try:
+            cache_file = kwargs.get(&#39;cache_file&#39;) or self.default_cache_file()
+            with open(cache_file, &#39;rb&#39;) as cached_file:
+                loaded = pickle.load(cached_file)
+            bridge_ip_address = loaded.get(&#39;bridge_ip_address&#39;)
+            user_name = loaded.get(&#39;user_name&#39;)
+        except FileNotFoundError:
+            raise UninitializedException
+        self.bridge_ip_address = bridge_ip_address
+        self.user_name = user_name
+        self.base_url = f&#39;http://{bridge_ip_address}/api/{user_name}&#39;
+
+    def default_cache_file(self) -&gt; str:
+        &#34;&#34;&#34;
+        Default cache file path, in the package&#39;s install directory.
+
+        Returns:
+            str: Cache file path
+        &#34;&#34;&#34;
+        package_base_dir = inspect.getfile(hue_api)
+        package_base_dir = os.path.dirname(package_base_dir)
+        path = os.path.join(package_base_dir, &#39;.pickle&#39;)
+        return path
+
+    def create_new_user(self, bridge_ip_address, *args, **kwargs):
+        &#34;&#34;&#34;
+        Create a new API user for the Hue Bridge at the given IP address.
+
+        Args:
+            bridge_ip_address (str): The IP Address for the Hue Bridge
+
+        Raises:
+            DevicetypeException: the Hue Bridge at the given address does not support interfacing via this API.
+
+            ButtonNotPressedException: the button on the Bridge was not pressed, so the attempt to connect to it has failed
+        &#34;&#34;&#34;
+        url = f&#39;http://{bridge_ip_address}/api&#39;
+        payload = {&#39;devicetype&#39;: &#39;hue_cli&#39;}
+        response = re.post(url, json=payload)
+        response = response.json()[0]
+        error = response.get(&#39;error&#39;)
+        if error:
+            if error[&#39;type&#39;] == 1:
+                raise DevicetypeException
+            else:
+                raise ButtonNotPressedException
+        user_name = response.get(&#39;success&#39;).get(&#39;username&#39;)
+        self.user_name = user_name
+        self.bridge_ip_address = bridge_ip_address
+        self.base_url = f&#39;http://{bridge_ip_address}/api/{user_name}&#39;
+
+    def save_api_key(self, cache_file=None, *args, **kwargs):
+        &#34;&#34;&#34;
+        Save the API key (username) to a cache file.
+
+        Args:
+            cache_file (str, optional): Path to cache file. Defaults to `self.default_cache_file`.
+        &#34;&#34;&#34;
+        cache_file = cache_file or self.default_cache_file()
+        with open(cache_file, &#39;wb&#39;) as pickle_file:
+            cache = {
+                &#39;bridge_ip_address&#39;: self.bridge_ip_address,
+                &#39;user_name&#39;: self.user_name
+            }
+            pickle.dump(cache, pickle_file)
+
+    def fetch_lights(self, *args, **kwargs):
+        &#34;&#34;&#34;
+        Fetch available lights from the bridge.
+
+        Returns:
+            [HueLight]: List of available lights. Also saved to `self.lights`
+        &#34;&#34;&#34;
+        url = self.base_url + &#34;/lights&#34;
+        response = re.get(url).json()
+        lights = []
+        for id in response:
+            state = response[id].get(&#39;state&#39;)
+            name = response[id].get(&#39;name&#39;)
+            hue_light = HueLight(int(id), name, state, url)
+            lights.append(hue_light)
+        self.lights = lights
+        return lights
+
+    def fetch_groups(self, *args, **kwargs):
+        &#34;&#34;&#34;
+        Fetch available groups from the bridge
+
+        Returns:
+            [HueGroup]: List of available groups. Also saved to `self.groups`
+        &#34;&#34;&#34;
+        url = self.base_url + &#34;/groups&#34;
+        response = re.get(url).json()
+        groups = []
+        for id in response:
+            group_name = response[id].get(&#39;name&#39;)
+            lights = [int(light) for light in response[id].get(&#39;lights&#39;)]
+            group_lights = self.filter_lights(lights)
+            groups.append(HueGroup(id, group_name, group_lights))
+        self.groups = groups
+        return groups
+
+    def fetch_scenes(self, *args, **kwargs):
+        &#34;&#34;&#34;
+        Fetch available scenes from the bridge
+
+        Returns:
+            [HueScene]: List of available groups. Also saved to `self.scenes`
+        &#34;&#34;&#34;
+        url = self.base_url + &#34;/scenes&#34;
+        response = re.get(url).json()
+        scenes = []
+        for id in response:
+            scene_name = response[id].get(&#39;name&#39;)
+            lights = [int(light) for light in response[id].get(&#39;lights&#39;)]
+            scene_lights = self.filter_lights(lights)
+            scenes.append(HueScene(id, scene_name, scene_lights))
+        self.scenes = scenes
+        self.grouped_scenes = HueScene.group_scenes(scenes)
+        return scenes
+
+    def print_debug_info(self, *args, **kwargs):
+        &#34;&#34;&#34;
+        Print some debug info about bridge.
+        &#34;&#34;&#34;
+        print(f&#34;Bridge IP address: {self.bridge_ip_address}&#34;)
+        print(f&#34;Bridge API key (username): {self.user_name}&#34;)
+        print(f&#34;API Base URL: {self.base_url}&#34;)
+
+    def list_lights(self, *args, **kwargs):
+        &#34;&#34;&#34;
+        Print debug info on all the lights from `self.lights`
+        &#34;&#34;&#34;
+        for light in self.lights:
+            print(light)
+
+    def list_groups(self, *args, **kwargs):
+        &#34;&#34;&#34;
+        Print debug info on all the groups from `self.groups`
+        &#34;&#34;&#34;
+        for group in self.groups:
+            print(group, &#34;\n&#34;)
+
+    def list_scenes(self, *args, **kwargs):
+        &#34;&#34;&#34;
+        Print debug info on all the scenes from `self.scenes`
+        &#34;&#34;&#34;
+        for scene in self.scenes:
+            print(scene, &#34;\n&#34;)
+
+    def list_scene_groups(self, *args, **kwargs):
+        &#34;&#34;&#34;
+        Print debug info on all the scenes from `self.grouped_scenes`.
+        These scenes are in a `dict` of `{ scene_name(str) : [HueScene] }`
+        &#34;&#34;&#34;
+        for group in self.grouped_scenes:
+            print(f&#34;\nScene group:{group}&#34;)
+            for scene in self.grouped_scenes[group]:
+                print(scene)
+
+    def filter_lights(self, indices):
+        &#34;&#34;&#34;
+        Return only certain lights, by id
+
+        Args:
+            indices ([int]): The ids of the lights we want
+
+        Returns:
+            [HueLight]: List of lights whose ids match `indices`
+        &#34;&#34;&#34;
+        if not indices:
+            return self.lights
+        return [light for light in self.lights if light.id in indices]
+
+    # Lights State Control
+
+    def turn_on(self, indices=[]):
+        &#34;&#34;&#34;
+        Turn on only those lights whose ids are provided
+
+        Args:
+            indices ([int], optional): Indices for the lights we want to turn on. Defaults to [].
+        &#34;&#34;&#34;
+        for light in self.filter_lights(indices):
+            light.set_on()
+
+    def turn_off(self, indices=[]):
+        &#34;&#34;&#34;
+        Turn off only those lights whose ids are provided
+
+        Args:
+            indices ([int], optional): Indices for the lights we want to turn off. Defaults to [].
+        &#34;&#34;&#34;
+        for light in self.filter_lights(indices):
+            light.set_off()
+
+    def toggle_on(self, indices=[]):
+        &#34;&#34;&#34;
+        Toggle on/pff only those lights whose ids are provided
+
+        Args:
+            indices ([int], optional): Indices for the lights we want to toggle. Defaults to [].
+        &#34;&#34;&#34;
+        for light in self.filter_lights(indices):
+            light.toggle_on()
+
+    def set_brightness(self, brightness, indices=[]):
+        &#34;&#34;&#34;
+        Set brightness on only those lights whose ids are provided
+
+        Args:
+            brightness (int or float): int value in range [0, 255], or float value in range [0, 1]
+            indices ([int], optional): Indices for lights we want to set brightness on.
+            Defaults to [].
+        &#34;&#34;&#34;
+        if isinstance(brightness, str):
+            try:
+                brightness = float(brightness)
+            except ValueError:
+                pass
+            if brightness == &#39;max&#39;:
+                brightness = 254
+            elif brightness == &#39;min&#39;:
+                brightness = 1
+            elif brightness == &#39;med&#39;:
+                brightness = 127
+        if isinstance(brightness, float):
+            if brightness &lt;= 1.0:
+                brightness *= 254
+            brightness = int(brightness)
+        for light in self.filter_lights(indices):
+            light.set_brightness(brightness)
+
+    def set_color(self, color, indices=[]):
+        &#34;&#34;&#34;
+        Set color for only those lights whose ids are provided
+
+        Args:
+            color (str): The webcolor name of the color we want to set the lights to
+            indices ([int], optional): Ids of lights we want to set color on. Defaults to [].
+        &#34;&#34;&#34;
+        if isinstance(color, str):
+            color = webcolors.name_to_rgb(color)
+            r = color[0] / 255
+            g = color[1] / 255
+            b = color[2] / 255
+        else:
+            r, g, b = color
+        h, s, _ = colorsys.rgb_to_hsv(r, g, b)
+        hue = int((2**16 - 1) * h)
+        saturation = int((2**8 - 1) * s)
+        for light in self.filter_lights(indices):
+            light.set_color(hue, saturation)</code></pre>
+</details>
+<h3>Methods</h3>
+<dl>
+<dt id="hue_api.hue.HueApi.create_new_user"><code class="name flex">
+<span>def <span class="ident">create_new_user</span></span>(<span>self, bridge_ip_address, *args, **kwargs)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Create a new API user for the Hue Bridge at the given IP address.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>bridge_ip_address</code></strong> :&ensp;<code>str</code></dt>
+<dd>The IP Address for the Hue Bridge</dd>
+</dl>
+<h2 id="raises">Raises</h2>
+<dl>
+<dt><code>DevicetypeException</code></dt>
+<dd>the Hue Bridge at the given address does not support interfacing via this API.</dd>
+<dt><code>ButtonNotPressedException</code></dt>
+<dd>the button on the Bridge was not pressed, so the attempt to connect to it has failed</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def create_new_user(self, bridge_ip_address, *args, **kwargs):
+    &#34;&#34;&#34;
+    Create a new API user for the Hue Bridge at the given IP address.
+
+    Args:
+        bridge_ip_address (str): The IP Address for the Hue Bridge
+
+    Raises:
+        DevicetypeException: the Hue Bridge at the given address does not support interfacing via this API.
+
+        ButtonNotPressedException: the button on the Bridge was not pressed, so the attempt to connect to it has failed
+    &#34;&#34;&#34;
+    url = f&#39;http://{bridge_ip_address}/api&#39;
+    payload = {&#39;devicetype&#39;: &#39;hue_cli&#39;}
+    response = re.post(url, json=payload)
+    response = response.json()[0]
+    error = response.get(&#39;error&#39;)
+    if error:
+        if error[&#39;type&#39;] == 1:
+            raise DevicetypeException
+        else:
+            raise ButtonNotPressedException
+    user_name = response.get(&#39;success&#39;).get(&#39;username&#39;)
+    self.user_name = user_name
+    self.bridge_ip_address = bridge_ip_address
+    self.base_url = f&#39;http://{bridge_ip_address}/api/{user_name}&#39;</code></pre>
+</details>
+</dd>
+<dt id="hue_api.hue.HueApi.default_cache_file"><code class="name flex">
+<span>def <span class="ident">default_cache_file</span></span>(<span>self) ‑> str</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Default cache file path, in the package's install directory.</p>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>str</code></dt>
+<dd>Cache file path</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def default_cache_file(self) -&gt; str:
+    &#34;&#34;&#34;
+    Default cache file path, in the package&#39;s install directory.
+
+    Returns:
+        str: Cache file path
+    &#34;&#34;&#34;
+    package_base_dir = inspect.getfile(hue_api)
+    package_base_dir = os.path.dirname(package_base_dir)
+    path = os.path.join(package_base_dir, &#39;.pickle&#39;)
+    return path</code></pre>
+</details>
+</dd>
+<dt id="hue_api.hue.HueApi.fetch_groups"><code class="name flex">
+<span>def <span class="ident">fetch_groups</span></span>(<span>self, *args, **kwargs)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Fetch available groups from the bridge</p>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>[HueGroup]</code></dt>
+<dd>List of available groups. Also saved to <code>self.groups</code></dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def fetch_groups(self, *args, **kwargs):
+    &#34;&#34;&#34;
+    Fetch available groups from the bridge
+
+    Returns:
+        [HueGroup]: List of available groups. Also saved to `self.groups`
+    &#34;&#34;&#34;
+    url = self.base_url + &#34;/groups&#34;
+    response = re.get(url).json()
+    groups = []
+    for id in response:
+        group_name = response[id].get(&#39;name&#39;)
+        lights = [int(light) for light in response[id].get(&#39;lights&#39;)]
+        group_lights = self.filter_lights(lights)
+        groups.append(HueGroup(id, group_name, group_lights))
+    self.groups = groups
+    return groups</code></pre>
+</details>
+</dd>
+<dt id="hue_api.hue.HueApi.fetch_lights"><code class="name flex">
+<span>def <span class="ident">fetch_lights</span></span>(<span>self, *args, **kwargs)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Fetch available lights from the bridge.</p>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>[HueLight]</code></dt>
+<dd>List of available lights. Also saved to <code>self.lights</code></dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def fetch_lights(self, *args, **kwargs):
+    &#34;&#34;&#34;
+    Fetch available lights from the bridge.
+
+    Returns:
+        [HueLight]: List of available lights. Also saved to `self.lights`
+    &#34;&#34;&#34;
+    url = self.base_url + &#34;/lights&#34;
+    response = re.get(url).json()
+    lights = []
+    for id in response:
+        state = response[id].get(&#39;state&#39;)
+        name = response[id].get(&#39;name&#39;)
+        hue_light = HueLight(int(id), name, state, url)
+        lights.append(hue_light)
+    self.lights = lights
+    return lights</code></pre>
+</details>
+</dd>
+<dt id="hue_api.hue.HueApi.fetch_scenes"><code class="name flex">
+<span>def <span class="ident">fetch_scenes</span></span>(<span>self, *args, **kwargs)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Fetch available scenes from the bridge</p>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>[HueScene]</code></dt>
+<dd>List of available groups. Also saved to <code>self.scenes</code></dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def fetch_scenes(self, *args, **kwargs):
+    &#34;&#34;&#34;
+    Fetch available scenes from the bridge
+
+    Returns:
+        [HueScene]: List of available groups. Also saved to `self.scenes`
+    &#34;&#34;&#34;
+    url = self.base_url + &#34;/scenes&#34;
+    response = re.get(url).json()
+    scenes = []
+    for id in response:
+        scene_name = response[id].get(&#39;name&#39;)
+        lights = [int(light) for light in response[id].get(&#39;lights&#39;)]
+        scene_lights = self.filter_lights(lights)
+        scenes.append(HueScene(id, scene_name, scene_lights))
+    self.scenes = scenes
+    self.grouped_scenes = HueScene.group_scenes(scenes)
+    return scenes</code></pre>
+</details>
+</dd>
+<dt id="hue_api.hue.HueApi.filter_lights"><code class="name flex">
+<span>def <span class="ident">filter_lights</span></span>(<span>self, indices)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Return only certain lights, by id</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>indices</code></strong> :&ensp;<code>[int]</code></dt>
+<dd>The ids of the lights we want</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>[HueLight]</code></dt>
+<dd>List of lights whose ids match <code>indices</code></dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def filter_lights(self, indices):
+    &#34;&#34;&#34;
+    Return only certain lights, by id
+
+    Args:
+        indices ([int]): The ids of the lights we want
+
+    Returns:
+        [HueLight]: List of lights whose ids match `indices`
+    &#34;&#34;&#34;
+    if not indices:
+        return self.lights
+    return [light for light in self.lights if light.id in indices]</code></pre>
+</details>
+</dd>
+<dt id="hue_api.hue.HueApi.list_groups"><code class="name flex">
+<span>def <span class="ident">list_groups</span></span>(<span>self, *args, **kwargs)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Print debug info on all the groups from <code>self.groups</code></p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def list_groups(self, *args, **kwargs):
+    &#34;&#34;&#34;
+    Print debug info on all the groups from `self.groups`
+    &#34;&#34;&#34;
+    for group in self.groups:
+        print(group, &#34;\n&#34;)</code></pre>
+</details>
+</dd>
+<dt id="hue_api.hue.HueApi.list_lights"><code class="name flex">
+<span>def <span class="ident">list_lights</span></span>(<span>self, *args, **kwargs)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Print debug info on all the lights from <code>self.lights</code></p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def list_lights(self, *args, **kwargs):
+    &#34;&#34;&#34;
+    Print debug info on all the lights from `self.lights`
+    &#34;&#34;&#34;
+    for light in self.lights:
+        print(light)</code></pre>
+</details>
+</dd>
+<dt id="hue_api.hue.HueApi.list_scene_groups"><code class="name flex">
+<span>def <span class="ident">list_scene_groups</span></span>(<span>self, *args, **kwargs)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Print debug info on all the scenes from <code>self.grouped_scenes</code>.
+These scenes are in a <code>dict</code> of <code>{ scene_name(str) : [HueScene] }</code></p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def list_scene_groups(self, *args, **kwargs):
+    &#34;&#34;&#34;
+    Print debug info on all the scenes from `self.grouped_scenes`.
+    These scenes are in a `dict` of `{ scene_name(str) : [HueScene] }`
+    &#34;&#34;&#34;
+    for group in self.grouped_scenes:
+        print(f&#34;\nScene group:{group}&#34;)
+        for scene in self.grouped_scenes[group]:
+            print(scene)</code></pre>
+</details>
+</dd>
+<dt id="hue_api.hue.HueApi.list_scenes"><code class="name flex">
+<span>def <span class="ident">list_scenes</span></span>(<span>self, *args, **kwargs)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Print debug info on all the scenes from <code>self.scenes</code></p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def list_scenes(self, *args, **kwargs):
+    &#34;&#34;&#34;
+    Print debug info on all the scenes from `self.scenes`
+    &#34;&#34;&#34;
+    for scene in self.scenes:
+        print(scene, &#34;\n&#34;)</code></pre>
+</details>
+</dd>
+<dt id="hue_api.hue.HueApi.load_existing"><code class="name flex">
+<span>def <span class="ident">load_existing</span></span>(<span>self, cache_file=None, *args, **kwargs)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Load existing hue bridge user setting from <code>cache_file</code>.
+If no <code>cache_file</code> is provided, the <code>self.default_cache_file</code> method is used to make a cache file in the package's install directory.
+Finally, lastly, <code>self.default_cache_file</code> is used if not.</p>
+<p>After running this method, the API is authenticated and the Hue bridge can be interacted with.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>cache_file</code></strong> :&ensp;<code>str</code>, optional</dt>
+<dd>Path to cache file. Defaults to <code>self.default_cache_file</code>.</dd>
+</dl>
+<h2 id="raises">Raises</h2>
+<dl>
+<dt><code>UninitializedException</code></dt>
+<dd>Hue API could not be initialized</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def load_existing(self, cache_file=None, *args, **kwargs):
+    &#34;&#34;&#34;
+    Load existing hue bridge user setting from `cache_file`.
+    If no `cache_file` is provided, the `self.default_cache_file` method is used to make a cache file in the package&#39;s install directory.
+    Finally, lastly, `self.default_cache_file` is used if not.
+
+    After running this method, the API is authenticated and the Hue bridge can be interacted with.
+
+    Args:
+        cache_file (str, optional): Path to cache file. Defaults to `self.default_cache_file`.
+    Raises:
+        UninitializedException: Hue API could not be initialized
+    &#34;&#34;&#34;
+    try:
+        cache_file = kwargs.get(&#39;cache_file&#39;) or self.default_cache_file()
+        with open(cache_file, &#39;rb&#39;) as cached_file:
+            loaded = pickle.load(cached_file)
+        bridge_ip_address = loaded.get(&#39;bridge_ip_address&#39;)
+        user_name = loaded.get(&#39;user_name&#39;)
+    except FileNotFoundError:
+        raise UninitializedException
+    self.bridge_ip_address = bridge_ip_address
+    self.user_name = user_name
+    self.base_url = f&#39;http://{bridge_ip_address}/api/{user_name}&#39;</code></pre>
+</details>
+</dd>
+<dt id="hue_api.hue.HueApi.print_debug_info"><code class="name flex">
+<span>def <span class="ident">print_debug_info</span></span>(<span>self, *args, **kwargs)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Print some debug info about bridge.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def print_debug_info(self, *args, **kwargs):
+    &#34;&#34;&#34;
+    Print some debug info about bridge.
+    &#34;&#34;&#34;
+    print(f&#34;Bridge IP address: {self.bridge_ip_address}&#34;)
+    print(f&#34;Bridge API key (username): {self.user_name}&#34;)
+    print(f&#34;API Base URL: {self.base_url}&#34;)</code></pre>
+</details>
+</dd>
+<dt id="hue_api.hue.HueApi.save_api_key"><code class="name flex">
+<span>def <span class="ident">save_api_key</span></span>(<span>self, cache_file=None, *args, **kwargs)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Save the API key (username) to a cache file.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>cache_file</code></strong> :&ensp;<code>str</code>, optional</dt>
+<dd>Path to cache file. Defaults to <code>self.default_cache_file</code>.</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def save_api_key(self, cache_file=None, *args, **kwargs):
+    &#34;&#34;&#34;
+    Save the API key (username) to a cache file.
+
+    Args:
+        cache_file (str, optional): Path to cache file. Defaults to `self.default_cache_file`.
+    &#34;&#34;&#34;
+    cache_file = cache_file or self.default_cache_file()
+    with open(cache_file, &#39;wb&#39;) as pickle_file:
+        cache = {
+            &#39;bridge_ip_address&#39;: self.bridge_ip_address,
+            &#39;user_name&#39;: self.user_name
+        }
+        pickle.dump(cache, pickle_file)</code></pre>
+</details>
+</dd>
+<dt id="hue_api.hue.HueApi.set_brightness"><code class="name flex">
+<span>def <span class="ident">set_brightness</span></span>(<span>self, brightness, indices=[])</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Set brightness on only those lights whose ids are provided</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>brightness</code></strong> :&ensp;<code>int</code> or <code>float</code></dt>
+<dd>int value in range [0, 255], or float value in range [0, 1]</dd>
+<dt><strong><code>indices</code></strong> :&ensp;<code>[int]</code>, optional</dt>
+<dd>Indices for lights we want to set brightness on.</dd>
+</dl>
+<p>Defaults to [].</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def set_brightness(self, brightness, indices=[]):
+    &#34;&#34;&#34;
+    Set brightness on only those lights whose ids are provided
+
+    Args:
+        brightness (int or float): int value in range [0, 255], or float value in range [0, 1]
+        indices ([int], optional): Indices for lights we want to set brightness on.
+        Defaults to [].
+    &#34;&#34;&#34;
+    if isinstance(brightness, str):
+        try:
+            brightness = float(brightness)
+        except ValueError:
+            pass
+        if brightness == &#39;max&#39;:
+            brightness = 254
+        elif brightness == &#39;min&#39;:
+            brightness = 1
+        elif brightness == &#39;med&#39;:
+            brightness = 127
+    if isinstance(brightness, float):
+        if brightness &lt;= 1.0:
+            brightness *= 254
+        brightness = int(brightness)
+    for light in self.filter_lights(indices):
+        light.set_brightness(brightness)</code></pre>
+</details>
+</dd>
+<dt id="hue_api.hue.HueApi.set_color"><code class="name flex">
+<span>def <span class="ident">set_color</span></span>(<span>self, color, indices=[])</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Set color for only those lights whose ids are provided</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>color</code></strong> :&ensp;<code>str</code></dt>
+<dd>The webcolor name of the color we want to set the lights to</dd>
+<dt><strong><code>indices</code></strong> :&ensp;<code>[int]</code>, optional</dt>
+<dd>Ids of lights we want to set color on. Defaults to [].</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def set_color(self, color, indices=[]):
+    &#34;&#34;&#34;
+    Set color for only those lights whose ids are provided
+
+    Args:
+        color (str): The webcolor name of the color we want to set the lights to
+        indices ([int], optional): Ids of lights we want to set color on. Defaults to [].
+    &#34;&#34;&#34;
+    if isinstance(color, str):
+        color = webcolors.name_to_rgb(color)
+        r = color[0] / 255
+        g = color[1] / 255
+        b = color[2] / 255
+    else:
+        r, g, b = color
+    h, s, _ = colorsys.rgb_to_hsv(r, g, b)
+    hue = int((2**16 - 1) * h)
+    saturation = int((2**8 - 1) * s)
+    for light in self.filter_lights(indices):
+        light.set_color(hue, saturation)</code></pre>
+</details>
+</dd>
+<dt id="hue_api.hue.HueApi.toggle_on"><code class="name flex">
+<span>def <span class="ident">toggle_on</span></span>(<span>self, indices=[])</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Toggle on/pff only those lights whose ids are provided</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>indices</code></strong> :&ensp;<code>[int]</code>, optional</dt>
+<dd>Indices for the lights we want to toggle. Defaults to [].</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def toggle_on(self, indices=[]):
+    &#34;&#34;&#34;
+    Toggle on/pff only those lights whose ids are provided
+
+    Args:
+        indices ([int], optional): Indices for the lights we want to toggle. Defaults to [].
+    &#34;&#34;&#34;
+    for light in self.filter_lights(indices):
+        light.toggle_on()</code></pre>
+</details>
+</dd>
+<dt id="hue_api.hue.HueApi.turn_off"><code class="name flex">
+<span>def <span class="ident">turn_off</span></span>(<span>self, indices=[])</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Turn off only those lights whose ids are provided</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>indices</code></strong> :&ensp;<code>[int]</code>, optional</dt>
+<dd>Indices for the lights we want to turn off. Defaults to [].</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def turn_off(self, indices=[]):
+    &#34;&#34;&#34;
+    Turn off only those lights whose ids are provided
+
+    Args:
+        indices ([int], optional): Indices for the lights we want to turn off. Defaults to [].
+    &#34;&#34;&#34;
+    for light in self.filter_lights(indices):
+        light.set_off()</code></pre>
+</details>
+</dd>
+<dt id="hue_api.hue.HueApi.turn_on"><code class="name flex">
+<span>def <span class="ident">turn_on</span></span>(<span>self, indices=[])</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Turn on only those lights whose ids are provided</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>indices</code></strong> :&ensp;<code>[int]</code>, optional</dt>
+<dd>Indices for the lights we want to turn on. Defaults to [].</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def turn_on(self, indices=[]):
+    &#34;&#34;&#34;
+    Turn on only those lights whose ids are provided
+
+    Args:
+        indices ([int], optional): Indices for the lights we want to turn on. Defaults to [].
+    &#34;&#34;&#34;
+    for light in self.filter_lights(indices):
+        light.set_on()</code></pre>
+</details>
+</dd>
+</dl>
+</dd>
+</dl>
+</section>
+</article>
+<nav id="sidebar">
+<h1>Index</h1>
+<div class="toc">
+<ul></ul>
+</div>
+<ul id="index">
+<li><h3>Super-module</h3>
+<ul>
+<li><code><a title="hue_api" href="index.html">hue_api</a></code></li>
+</ul>
+</li>
+<li><h3><a href="#header-classes">Classes</a></h3>
+<ul>
+<li>
+<h4><code><a title="hue_api.hue.HueApi" href="#hue_api.hue.HueApi">HueApi</a></code></h4>
+<ul class="two-column">
+<li><code><a title="hue_api.hue.HueApi.create_new_user" href="#hue_api.hue.HueApi.create_new_user">create_new_user</a></code></li>
+<li><code><a title="hue_api.hue.HueApi.default_cache_file" href="#hue_api.hue.HueApi.default_cache_file">default_cache_file</a></code></li>
+<li><code><a title="hue_api.hue.HueApi.fetch_groups" href="#hue_api.hue.HueApi.fetch_groups">fetch_groups</a></code></li>
+<li><code><a title="hue_api.hue.HueApi.fetch_lights" href="#hue_api.hue.HueApi.fetch_lights">fetch_lights</a></code></li>
+<li><code><a title="hue_api.hue.HueApi.fetch_scenes" href="#hue_api.hue.HueApi.fetch_scenes">fetch_scenes</a></code></li>
+<li><code><a title="hue_api.hue.HueApi.filter_lights" href="#hue_api.hue.HueApi.filter_lights">filter_lights</a></code></li>
+<li><code><a title="hue_api.hue.HueApi.list_groups" href="#hue_api.hue.HueApi.list_groups">list_groups</a></code></li>
+<li><code><a title="hue_api.hue.HueApi.list_lights" href="#hue_api.hue.HueApi.list_lights">list_lights</a></code></li>
+<li><code><a title="hue_api.hue.HueApi.list_scene_groups" href="#hue_api.hue.HueApi.list_scene_groups">list_scene_groups</a></code></li>
+<li><code><a title="hue_api.hue.HueApi.list_scenes" href="#hue_api.hue.HueApi.list_scenes">list_scenes</a></code></li>
+<li><code><a title="hue_api.hue.HueApi.load_existing" href="#hue_api.hue.HueApi.load_existing">load_existing</a></code></li>
+<li><code><a title="hue_api.hue.HueApi.print_debug_info" href="#hue_api.hue.HueApi.print_debug_info">print_debug_info</a></code></li>
+<li><code><a title="hue_api.hue.HueApi.save_api_key" href="#hue_api.hue.HueApi.save_api_key">save_api_key</a></code></li>
+<li><code><a title="hue_api.hue.HueApi.set_brightness" href="#hue_api.hue.HueApi.set_brightness">set_brightness</a></code></li>
+<li><code><a title="hue_api.hue.HueApi.set_color" href="#hue_api.hue.HueApi.set_color">set_color</a></code></li>
+<li><code><a title="hue_api.hue.HueApi.toggle_on" href="#hue_api.hue.HueApi.toggle_on">toggle_on</a></code></li>
+<li><code><a title="hue_api.hue.HueApi.turn_off" href="#hue_api.hue.HueApi.turn_off">turn_off</a></code></li>
+<li><code><a title="hue_api.hue.HueApi.turn_on" href="#hue_api.hue.HueApi.turn_on">turn_on</a></code></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</nav>
+</main>
+<footer id="footer">
+<p>Generated by <a href="https://pdoc3.github.io/pdoc"><cite>pdoc</cite> 0.9.2</a>.</p>
+</footer>
+</body>
+</html>
