@@ -21,4 +21,4 @@ This client provides functionality to control lights currently linked to the hue
 
 You can then call `api.list_lights()` to get a list of the lights available on the network.
 
-See documentation for details on what controls are available.
+See [documentation](http://hue-py-docs.s3-website-us-east-1.amazonaws.com/) for details on what controls are available.

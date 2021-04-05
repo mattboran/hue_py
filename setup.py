@@ -7,14 +7,14 @@ tests_require = ['pytest', 'pytest-cov']
 
 setuptools.setup(
     name="hue_py",
-    version="0.2.1",
+    version="0.3.0",
     author="Matt Boran",
     author_email="mattboran@gmail.com",
     description="Python client for Philips Hue bulbs",
     long_description=long_description,
     long_description_content_type="text/markdown",
     url="https://github.com/mattboran/hue_py",
-    download_url="https://github.com/mattboran/hue_py/releases/download/0.2.1/hue_py-0.2.1-py3-none-any.whl",
+    download_url="https://github.com/mattboran/hue_py/releases/download/0.3.0/hue_py-0.3.0-py3-none-any.whl",
     packages=setuptools.find_packages(),
     classifiers=[
         "Development Status :: 3 - Alpha",

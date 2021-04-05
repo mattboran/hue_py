@@ -9,3 +9,4 @@ build/
 .eggs/
 .coverage
 scripts/
+.DS_Store
