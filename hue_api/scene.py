@@ -4,9 +4,9 @@ class HueScene:
 
     Attributes
 
-        id (int): Scene's ID
-        name (str): Scene's name
-        lights ([HueLight]): List of lights belonging to this scene
+    - `id` (`int`): Scene's ID
+    - `name` (`str`): Scene's name
+    - `lights` (`[HueLight]`): List of lights belonging to this scene
     """
     def __init__(self, id, name, lights):
         self.id = id

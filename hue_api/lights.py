@@ -11,10 +11,11 @@ class HueLight:
         FailedToSetState: When `self.set_state` fails, usually due to a bad parameter that the Hue API doesn't support.
 
     Attributes
-        id (int): Light ID
-        name (str): Light's name
-        light_url (str): The url that corresponds to the light. Of the form `<bridge_url>/<light.id>`
-        state (LightState): The reactive light state. This shouldn't be used directly.
+    
+    - `id` (`int`): Light ID
+    - `name` (`str`): Light's name
+    - `light_url` (`str`): The url that corresponds to the light. Of the form `<bridge_url>/<light.id>`
+    - `state` (`LightState`): The reactive light state. This shouldn't be used directly.
     """
 
     # Public methods

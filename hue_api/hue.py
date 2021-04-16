@@ -25,6 +25,13 @@ class HueApi:
     Then, either `create_new_user` or `load_existing`.
 
     From there you can run all of the other methods that this class provides. 
+
+    Attributes
+
+    - `lights` (`[HueLight]`): List of `HueLight`
+    - `groups` (`[HueGroup]`): List of `HueGroup`
+    - `scenes` (`[HueScene]`): List of `HueScene`
+    - `grouped_scenes` (`Dictionary[str, [HueScene]]`): Scene dict, grouped by scene name
     """
 
     def __init__(self):
