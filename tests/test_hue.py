@@ -23,6 +23,11 @@ def put_nothing(monkeypatch):
         return MockResponse()
     monkeypatch.setattr(requests, "put", mock_put)
 
+def test_defaults_dont_crash():
+    api = HueApi()
+    with pytest.raises(UninitializedException):
+        api.load_existing()
+
 def test_load_existing():
     test_cache_file = '.test'
     test_ip_address = 'test_address'

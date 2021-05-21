@@ -54,6 +54,7 @@ class HueApi:
             UninitializedException: Hue API could not be initialized
         """
         try:
+            cache_file = cache_file or self.default_cache_file()
             with open(cache_file, 'rb') as cached_file:
                 loaded = pickle.load(cached_file)
             bridge_ip_address = loaded.get('bridge_ip_address')
